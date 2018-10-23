@@ -8,13 +8,36 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, UITextFieldDelegate {
+    
+    let zipCodeDelegate = ZipCodeTextFieldDelegate()
+    let cashDelegate = CashTextFieldDelegate()
+    
+    @IBOutlet var zipTextField: UITextField!
+    @IBOutlet var cashTextField: UITextField!
+    @IBOutlet var allowEditingSwitch: UISwitch!
+    @IBOutlet var nameTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        zipTextField.delegate = zipCodeDelegate
+        cashTextField.delegate = cashDelegate
     }
-
-
+    
+    @IBAction func dismissKeyboard(_ sender: AnyObject) {
+        if !(sender as! UISwitch).isOn {
+            nameTextField.resignFirstResponder()
+        }
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return allowEditingSwitch.isOn
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
 
