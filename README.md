@@ -1,6 +1,6 @@
 # Delegates Challenge
 
-Um simples app para aprender sobre delegates em UITextFields.
+Um simples app para aprender sobre delegates em `UITextField`s.
 
 ### Conceitos utilizados
 
